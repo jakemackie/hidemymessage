@@ -57,7 +57,7 @@ async function shareMessage() {
 </script>
 
 <template>
-  <div class="px-2 sm:px-0 max-w-md w-full flex flex-col gap-2">
+  <div class="px-2 sm:px-0 max-w-md w-full flex items-center flex-col gap-2">
     <div class="mb-4 text-center">
       <h1 class="text-3xl font-bold text-gray-900 mb-2">🔒 Hide My Message</h1>
       <p class="text-gray-600">Send encrypted messages that only the recipient can read</p>
@@ -73,7 +73,7 @@ async function shareMessage() {
     <Button
       :disabled="!message.trim() || isEncrypting"
       @click="shareMessage"
-      class="sm:ml-auto sm:w-fit bg-indigo-500 hover:bg-indigo-600"
+      class="w-full sm:ml-auto sm:w-fit bg-indigo-500 hover:bg-indigo-600"
     >
       {{ isEncrypting ? 'Encrypting...' : 'Encrypt & Share' }}
     </Button>
@@ -81,13 +81,13 @@ async function shareMessage() {
     <p class="text-sm text-gray-500 text-center mt-4">
       Your message is encrypted in your browser. The key never leaves your device.
     </p>
-  </div>
 
-  <a 
-    class="mt-8 group"
-    href="https://github.com/jakemackie/hidemymessage/"
-    taget="_blank"
-  >
-    <GitHubIcon class="size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
-  </a>
+     <a 
+      class="mt-8 group"
+      href="https://github.com/jakemackie/hidemymessage/"
+      taget="_blank"
+    >
+      <GitHubIcon class="size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+    </a>
+  </div>
 </template>
