@@ -48,56 +48,54 @@ function copyToClipboard() {
 </script>
 
 <template>
-  <main class="pt-20 sm:pt-0 min-h-screen flex flex-col items-center sm:justify-center">
-    <div class="max-w-md w-full text-center">
-      <div v-if="isLoading" class="space-y-4">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
-        <p class="text-gray-600">Decrypting your message...</p>
-      </div>
-
-      <div v-else-if="hasError" class="space-y-4">
-        <div class="text-red-500 text-5xl">⚠️</div>
-        <h1 class="text-2xl font-bold text-gray-900">Decryption Failed</h1>
-        <p class="text-gray-600">{{ errorMessage }}</p>
-        <Button @click="router.push('/')" class="bg-indigo-500 hover:bg-indigo-600">
-          Create Your Own Message
-        </Button>
-      </div>
-
-      <Dialog v-model:open="showDialog">
-        <DialogContent class="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Secret Message</DialogTitle>
-            <DialogDescription>
-              This message was encrypted and shared securely.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div class="space-y-4">
-            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <p class="text-gray-900 whitespace-pre-wrap wrap-break-word">{{ decryptedMessage }}</p>
-            </div>
-            
-            <div class="flex gap-2">
-              <Button 
-                @click="copyToClipboard" 
-                variant="outline"
-                class="flex-1"
-              >
-                Copy Message
-              </Button>
-              <Button 
-                @click="router.push('/')" 
-                class="flex-1 bg-indigo-500 hover:bg-indigo-600"
-              >
-                Create Your Own
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <MessageForm v-if="!isLoading && !hasError" class="mt-8" />
+  <div class="max-w-md w-full text-center">
+    <div v-if="isLoading" class="space-y-4">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
+      <p class="text-gray-600">Decrypting your message...</p>
     </div>
-  </main>
+
+    <div v-else-if="hasError" class="space-y-4">
+      <div class="text-red-500 text-5xl">⚠️</div>
+      <h1 class="text-2xl font-bold text-gray-900">Decryption Failed</h1>
+      <p class="text-gray-600">{{ errorMessage }}</p>
+      <Button @click="router.push('/')" class="bg-indigo-500 hover:bg-indigo-600">
+        Create Your Own Message
+      </Button>
+    </div>
+
+    <Dialog v-model:open="showDialog">
+      <DialogContent class="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Secret Message</DialogTitle>
+          <DialogDescription>
+            This message was encrypted and shared securely.
+          </DialogDescription>
+        </DialogHeader>
+        
+        <div class="space-y-4">
+          <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <p class="text-gray-900 whitespace-pre-wrap wrap-break-word">{{ decryptedMessage }}</p>
+          </div>
+          
+          <div class="flex gap-2">
+            <Button 
+              @click="copyToClipboard" 
+              variant="outline"
+              class="flex-1"
+            >
+              Copy Message
+            </Button>
+            <Button 
+              @click="router.push('/')" 
+              class="flex-1 bg-indigo-500 hover:bg-indigo-600"
+            >
+              Create Your Own
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+
+    <MessageForm v-if="!isLoading && !hasError" class="mt-8" />
+  </div>
 </template>
