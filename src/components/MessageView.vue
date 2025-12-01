@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { decryptMessage, parseUrlFragment } from '../lib/crypto';
 import { Button } from './ui/button';
+import MessageForm from './MessageForm.vue';
 import {
   Dialog,
   DialogContent,
@@ -47,7 +48,7 @@ function copyToClipboard() {
 </script>
 
 <template>
-  <main class="min-h-screen flex flex-col items-center justify-center p-4">
+  <main class="pt-20 sm:pt-0 min-h-screen flex flex-col items-center sm:justify-center">
     <div class="max-w-md w-full text-center">
       <div v-if="isLoading" class="space-y-4">
         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
@@ -96,12 +97,7 @@ function copyToClipboard() {
         </DialogContent>
       </Dialog>
 
-      <div v-if="!isLoading && !hasError && !showDialog" class="space-y-4">
-        <p class="text-gray-600">Message closed</p>
-        <Button @click="router.push('/')" class="bg-indigo-500 hover:bg-indigo-600">
-          Create Your Own Message
-        </Button>
-      </div>
+      <MessageForm v-if="!isLoading && !hasError" class="mt-8" />
     </div>
   </main>
 </template>
