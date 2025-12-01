@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { encryptMessage, createShareableUrl } from '../lib/crypto';
+import { toast } from 'vue-sonner'
 
 const message = ref('');
 const isEncrypting = ref(false);
@@ -27,27 +28,27 @@ async function shareMessage() {
           text: "I've sent you a secret message. Click to decrypt:",
           url,
         });
-        console.log("Shared successfully!");
+        toast.success('Message Encrypted!');
       } catch (err) {
         // User canceled or share failed
         if ((err as Error).name !== 'AbortError') {
           console.warn("Share canceled or failed", err);
           // Fallback: copy to clipboard
           await navigator.clipboard.writeText(url);
-          alert("Link copied to clipboard!");
+          toast.success("Link copied to clipboard!");
         }
       }
     } else {
       // Fallback: copy to clipboard
       await navigator.clipboard.writeText(url);
-      alert("Link copied to clipboard! Share it with anyone.");
+      toast.success("Link copied to clipboard! Share it with anyone.");
     }
     
     // Clear the message after sharing
     message.value = '';
   } catch (error) {
     console.error('Encryption error:', error);
-    alert('Failed to encrypt message. Please try again.');
+    toast.error('Failed to encrypt message. Please try again.');
   } finally {
     isEncrypting.value = false;
   }
