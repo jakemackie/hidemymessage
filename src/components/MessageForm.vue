@@ -4,6 +4,7 @@ import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { encryptMessage, createShareableUrl } from '../lib/crypto';
 import { toast } from 'vue-sonner'
+import GitHubIcon from './GitHubIcon.vue';
 
 const message = ref('');
 const isEncrypting = ref(false);
@@ -65,7 +66,7 @@ async function shareMessage() {
     <Textarea
       v-model="message"
       placeholder="Type your secret message here..."
-      class="min-h-20"
+      class="min-h-40"
       :disabled="isEncrypting"
     />
 
@@ -81,4 +82,12 @@ async function shareMessage() {
       Your message is encrypted in your browser. The key never leaves your device.
     </p>
   </div>
+
+  <a 
+    class="mt-8 group"
+    href="https://github.com/jakemackie/hidemymessage/"
+    taget="_blank"
+  >
+    <GitHubIcon class="size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+  </a>
 </template>
