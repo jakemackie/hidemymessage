@@ -66,14 +66,14 @@ async function shareMessage() {
     <Textarea
       v-model="message"
       placeholder="Type your secret message here..."
-      class="min-h-40"
+      class="min-h-40 bg-white border-gray-300"
       :disabled="isEncrypting"
     />
 
     <Button
       :disabled="!message.trim() || isEncrypting"
       @click="shareMessage"
-      class="w-full sm:ml-auto sm:w-fit bg-indigo-500 hover:bg-indigo-600"
+      class="w-full sm:ml-auto sm:w-fit hover:-translate-y-0.5 active:translate-y-0.5 focus:translate-y-0.5 bg-blue-500 hover:bg-blue-400 border-b-4 border-transparent hover:border-blue-300 active:bg-green-500 active:border-green-300 focus:bg-green-500 focus:border-green-300 shadow-lg transition"
     >
       {{ isEncrypting ? 'Encrypting...' : 'Encrypt & Share' }}
     </Button>
