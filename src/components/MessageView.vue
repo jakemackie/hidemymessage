@@ -87,7 +87,7 @@ function copyToClipboard() {
             </Button>
             <Button 
               @click="router.push('/')" 
-              class="flex-1 bg-indigo-500 hover:bg-indigo-600"
+              class="flex-1 bg-blue-400 hover:bg-blue-500"
             >
               Create Your Own
             </Button>
