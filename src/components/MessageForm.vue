@@ -5,6 +5,8 @@ import { Button } from './ui/button';
 import { encryptMessage, createShareableUrl } from '../lib/crypto';
 import { toast } from 'vue-sonner'
 import GitHubIcon from './GitHubIcon.vue';
+import ShareIcon from './ShareIcon.vue';
+import SpinnerIcon from './SpinnerIcon.vue';
 
 const message = ref('');
 const isEncrypting = ref(false);
@@ -72,10 +74,13 @@ async function shareMessage() {
 
     <Button
       :disabled="!message.trim() || isEncrypting"
+      :class="message.trim() ? '-translate-y-0.5' : ''"
       @click="shareMessage"
-      class="w-full sm:ml-auto sm:w-fit hover:-translate-y-0.5 active:translate-y-0.5 focus:translate-y-0.5 bg-blue-500 hover:bg-blue-400 border-b-4 border-transparent hover:border-blue-300 active:bg-green-500 active:border-green-300 focus:bg-green-500 focus:border-green-300 shadow-lg transition"
+      class="w-full sm:ml-auto sm:w-fit flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0.5 focus:translate-y-0.5 bg-blue-500 hover:bg-blue-400 border-b-4 border-transparent hover:border-blue-300 active:bg-green-500 active:border-green-300 focus:bg-green-500 focus:border-green-300 shadow-lg transition"
     >
-      {{ isEncrypting ? 'Encrypting...' : 'Encrypt & Share' }}
+      <SpinnerIcon class="size-5" v-if="isEncrypting" />
+      <ShareIcon class="size-5" v-else />
+      <span>{{ isEncrypting ? 'Encrypting...' : 'Share' }}</span>
     </Button>
 
     <p class="text-sm text-gray-500 text-center mt-4">
