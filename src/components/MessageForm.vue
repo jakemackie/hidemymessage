@@ -59,7 +59,7 @@ async function shareMessage() {
 </script>
 
 <template>
-  <div class="px-2 sm:px-0 max-w-md w-full flex items-center flex-col gap-2">
+  <div class="px-2 sm:px-0 max-w-md w-full flex flex-col gap-2">
     <div class="mb-4 text-center">
       <h1 class="text-3xl font-bold text-gray-900 mb-2">🔒 Hide My Message</h1>
       <p class="text-gray-600">Send encrypted messages that only the recipient can read</p>
@@ -87,12 +87,20 @@ async function shareMessage() {
       Your message is encrypted in your browser. The key never leaves your device.
     </p>
 
-     <a 
-      class="mt-8 group"
+
+    <div class="relative mt-8 w-full sm:w-80 rounded-lg border border-gray-100 bg-white shadow-lg">
+      <div class="absolute left-14 bottom-0 h-4 w-4 -translate-x-1/2 translate-y-1/2 rotate-45 transform border-r border-b border-gray-100 bg-white"></div>
+      <p class="p-4 text-sm text-gray-500">
+        I&apos;m open source! Please leave a star if you found me useful. ⭐
+      </p>
+    </div>
+
+    <a 
+      class="mt-4 group"
       href="https://github.com/jakemackie/hidemymessage/"
       taget="_blank"
     >
-      <GitHubIcon class="size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+      <GitHubIcon class="ml-10.75 size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
     </a>
   </div>
 </template>
