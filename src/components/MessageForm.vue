@@ -76,7 +76,7 @@ async function shareMessage() {
       :disabled="!message.trim() || isEncrypting"
       :class="message.trim() ? '-translate-y-0.5' : ''"
       @click="shareMessage"
-      class="w-full sm:ml-auto sm:w-fit flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0.5 focus:translate-y-0.5 bg-blue-500 hover:bg-blue-400 border-b-4 border-transparent hover:border-blue-300 active:bg-green-500 active:border-green-300 focus:bg-green-500 focus:border-green-300 shadow-lg transition"
+      class="w-full sm:ml-auto sm:w-fit flex items-center gap-1 hover:-translate-y-0.5 active:translate-y-0.5 focus:translate-y-0.5 bg-blue-500 hover:bg-blue-400 border-b-4 border-transparent hover:border-blue-300 active:bg-blue-400 active:border-blue-300 focus:bg-blue-400 focus:border-blue-300 shadow-lg transition"
     >
       <SpinnerIcon class="size-5" v-if="isEncrypting" />
       <ShareIcon class="size-5" v-else />
@@ -95,12 +95,14 @@ async function shareMessage() {
       </p>
     </div>
 
-    <a 
-      class="mt-4 group"
-      href="https://github.com/jakemackie/hidemymessage/"
-      taget="_blank"
-    >
-      <GitHubIcon class="ml-10.75 size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
-    </a>
+    <div class="ml-10.75 mt-4">
+      <a 
+        class="group"
+        href="https://github.com/jakemackie/hidemymessage/"
+        taget="_blank"
+      >
+        <GitHubIcon class="size-7 group-hover:rotate-12 group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+      </a>
+    </div>
   </div>
 </template>
