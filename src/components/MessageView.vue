@@ -80,7 +80,7 @@ function copyToClipboard() {
         
         <div class="space-y-4">
           <div class="max-h-40 overflow-scroll p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <p class="text-gray-900 whitespace-pre-wrap wrap-break-word">
+            <p class="text-gray-900 whitespace-pre-wrap break-all">
               {{ decryptedMessage }}
             </p>
           </div>
