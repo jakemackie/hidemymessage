@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { VitePWA } from 'vite-plugin-pwa'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 export default defineConfig({
   plugins: [
@@ -31,6 +32,25 @@ export default defineConfig({
             type: 'image/png'
           }
         ]
+      }
+    }),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          jsonLd: `
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Hide My Message",
+              "url": "https://hidemymessage.com",
+              "description": "A simple tool to create and share hidden or encrypted messages.",
+              "applicationCategory": "Utility",
+              "operatingSystem": "All"
+            }
+            </script>
+          `
+        }
       }
     })
   ],
