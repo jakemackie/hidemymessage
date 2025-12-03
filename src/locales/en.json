@@ -1,0 +1,31 @@
+{
+  "app": {
+    "title": "🔒 Hide My Message",
+    "description": "Send encrypted messages that only the recipient can read",
+    "security": "Your message is encrypted in your browser. The key never leaves your device.",
+    "openSource": "I'm open source! If you found this website helpful, please consider leaving a star! ⭐"
+  },
+  "form": {
+    "placeholder": "Type your secret message here...",
+    "encrypting": "Encrypting...",
+    "share": "Share"
+  },
+  "message": {
+    "title": "Secret Message",
+    "description": "This message was encrypted and shared securely.",
+    "decrypting": "Decrypting your message...",
+    "copyMessage": "Copy Message",
+    "copied": "Copied!",
+    "createYourOwn": "Create Your Own"
+  },
+  "error": {
+    "decryptionFailed": "Decryption Failed",
+    "createYourOwnMessage": "Create Your Own Message"
+  },
+  "toast": {
+    "messageEncrypted": "Message Encrypted!",
+    "linkCopied": "Link copied to clipboard!",
+    "linkCopiedShare": "Link copied to clipboard! Share it with anyone.",
+    "encryptionFailed": "Failed to encrypt message. Please try again."
+  }
+}

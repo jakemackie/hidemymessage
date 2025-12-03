@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { encryptMessage, createShareableUrl } from '../lib/crypto';
@@ -8,6 +9,7 @@ import GitHubIcon from './GitHubIcon.vue';
 import ShareIcon from './ShareIcon.vue';
 import SpinnerIcon from './SpinnerIcon.vue';
 
+const { t } = useI18n();
 const message = ref('');
 const isEncrypting = ref(false);
 
@@ -31,27 +33,27 @@ async function shareMessage() {
           text: "I've sent you a secret message. Click to decrypt:",
           url,
         });
-        toast.success('Message Encrypted!');
+        toast.success(t('toast.messageEncrypted'));
       } catch (err) {
         // User canceled or share failed
         if ((err as Error).name !== 'AbortError') {
           console.warn("Share canceled or failed", err);
           // Fallback: copy to clipboard
           await navigator.clipboard.writeText(url);
-          toast.success("Link copied to clipboard!");
+          toast.success(t('toast.linkCopied'));
         }
       }
     } else {
       // Fallback: copy to clipboard
       await navigator.clipboard.writeText(url);
-      toast.success("Link copied to clipboard! Share it with anyone.");
+      toast.success(t('toast.linkCopiedShare'));
     }
     
     // Clear the message after sharing
     message.value = '';
   } catch (error) {
     console.error('Encryption error:', error);
-    toast.error('Failed to encrypt message. Please try again.');
+    toast.error(t('toast.encryptionFailed'));
   } finally {
     isEncrypting.value = false;
   }
@@ -61,13 +63,13 @@ async function shareMessage() {
 <template>
   <div class="px-2 sm:px-0 max-w-md w-full flex flex-col gap-2">
     <div class="mb-4 text-center">
-      <h1 class="text-3xl font-bold text-gray-800 mb-2">🔒 Hide My Message</h1>
-      <p class="text-gray-600">Send encrypted messages that only the recipient can read</p>
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ t('app.title') }}</h1>
+      <p class="text-gray-600">{{ t('app.description') }}</p>
     </div>
 
     <Textarea
       v-model="message"
-      placeholder="Type your secret message here..."
+      :placeholder="t('form.placeholder')"
       class="min-h-40 bg-white border-gray-300"
       :disabled="isEncrypting"
     />
@@ -79,18 +81,18 @@ async function shareMessage() {
     >
       <SpinnerIcon class="size-5" v-if="isEncrypting" />
       <ShareIcon class="size-5" v-else />
-      <span>{{ isEncrypting ? 'Encrypting...' : 'Share' }}</span>
+      <span>{{ isEncrypting ? t('form.encrypting') : t('form.share') }}</span>
     </Button>
 
     <p class="text-sm text-gray-500 text-center mt-4">
-      Your message is encrypted in your browser. The key never leaves your device.
+      {{ t('app.security') }}
     </p>
 
 
     <div class="relative mt-8 w-full sm:w-80 rounded-lg border border-gray-300 bg-white">
       <div class="absolute left-14 bottom-0 size-4 -translate-x-1/2 translate-y-1/2 rotate-45 transform border-r border-b border-gray-300 bg-white"></div>
       <p class="text-left p-4 text-sm text-gray-500">
-        I&apos;m open source! If you found this website helpful, please consider leaving a star! ⭐
+        {{ t('app.openSource') }}
       </p>
     </div>
 

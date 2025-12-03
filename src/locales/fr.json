@@ -1,0 +1,31 @@
+{
+  "app": {
+    "title": "🔒 Cacher Mon Message",
+    "description": "Envoyez des messages cryptés que seul le destinataire peut lire",
+    "security": "Votre message est crypté dans votre navigateur. La clé ne quitte jamais votre appareil.",
+    "openSource": "Je suis open source ! Si vous avez trouvé ce site utile, pensez à laisser une étoile ! ⭐"
+  },
+  "form": {
+    "placeholder": "Tapez votre message secret ici...",
+    "encrypting": "Cryptage...",
+    "share": "Partager"
+  },
+  "message": {
+    "title": "Message Secret",
+    "description": "Ce message a été crypté et partagé en toute sécurité.",
+    "decrypting": "Décryptage de votre message...",
+    "copyMessage": "Copier le Message",
+    "copied": "Copié !",
+    "createYourOwn": "Créer le Vôtre"
+  },
+  "error": {
+    "decryptionFailed": "Échec du Décryptage",
+    "createYourOwnMessage": "Créer Votre Propre Message"
+  },
+  "toast": {
+    "messageEncrypted": "Message Crypté !",
+    "linkCopied": "Lien copié dans le presse-papiers !",
+    "linkCopiedShare": "Lien copié dans le presse-papiers ! Partagez-le avec n'importe qui.",
+    "encryptionFailed": "Échec du cryptage du message. Veuillez réessayer."
+  }
+}

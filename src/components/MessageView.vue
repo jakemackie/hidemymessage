@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { decryptMessage, parseUrlFragment } from '../lib/crypto';
 import { Button } from './ui/button';
 import MessageForm from './MessageForm.vue';
@@ -13,6 +14,7 @@ import {
 } from './ui/dialog';
 
 const router = useRouter();
+const { t } = useI18n();
 const decryptedMessage = ref('');
 const isLoading = ref(true);
 const hasError = ref(false);
@@ -57,24 +59,24 @@ function copyToClipboard() {
   <div class="max-w-md w-full text-center">
     <div v-if="isLoading" class="space-y-4">
       <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
-      <p class="text-gray-600">Decrypting your message...</p>
+      <p class="text-gray-600">{{ t('message.decrypting') }}</p>
     </div>
 
     <div v-else-if="hasError" class="space-y-4">
       <div class="text-red-500 text-5xl">⚠️</div>
-      <h1 class="text-2xl font-bold text-gray-900">Decryption Failed</h1>
+      <h1 class="text-2xl font-bold text-gray-900">{{ t('error.decryptionFailed') }}</h1>
       <p class="text-gray-600">{{ errorMessage }}</p>
       <Button @click="router.push('/')" class="bg-blue-400 hover:bg-blue-500 active:scale-95 transition-transform duration-75 ease-in-out">
-        Create Your Own Message
+        {{ t('error.createYourOwnMessage') }}
       </Button>
     </div>
 
     <Dialog v-model:open="showDialog">
       <DialogContent class="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Secret Message</DialogTitle>
+          <DialogTitle>{{ t('message.title') }}</DialogTitle>
           <DialogDescription>
-            This message was encrypted and shared securely.
+            {{ t('message.description') }}
           </DialogDescription>
         </DialogHeader>
         
@@ -91,13 +93,13 @@ function copyToClipboard() {
               variant="outline"
               class="flex-1 cursor-copy active:scale-95 transition-transform duration-75 ease-in-out"
             >
-              {{ isCopied ? 'Copied!' : 'Copy Message' }}
+              {{ isCopied ? t('message.copied') : t('message.copyMessage') }}
             </Button>
             <Button 
               @click="router.push('/')" 
               class="flex-1 bg-blue-400 hover:bg-blue-500 active:scale-95 transition-transform duration-75 ease-in-out"
             >
-              Create Your Own
+              {{ t('message.createYourOwn') }}
             </Button>
           </div>
         </div>
