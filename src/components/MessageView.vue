@@ -18,6 +18,7 @@ const isLoading = ref(true);
 const hasError = ref(false);
 const errorMessage = ref('');
 const showDialog = ref(false);
+const isCopied = ref(false);
 
 onMounted(async () => {
   try {
@@ -43,7 +44,12 @@ onMounted(async () => {
 });
 
 function copyToClipboard() {
-  navigator.clipboard.writeText(decryptedMessage.value);
+  navigator.clipboard.writeText(decryptedMessage.value).then(() => {
+    isCopied.value = true;
+    setTimeout(() => {
+      isCopied.value = false;
+    }, 2000);
+  });
 }
 </script>
 
@@ -58,7 +64,7 @@ function copyToClipboard() {
       <div class="text-red-500 text-5xl">⚠️</div>
       <h1 class="text-2xl font-bold text-gray-900">Decryption Failed</h1>
       <p class="text-gray-600">{{ errorMessage }}</p>
-      <Button @click="router.push('/')" class="bg-indigo-500 hover:bg-indigo-600">
+      <Button @click="router.push('/')" class="bg-blue-400 hover:bg-blue-500 active:scale-95 transition-transform duration-75 ease-in-out">
         Create Your Own Message
       </Button>
     </div>
@@ -73,21 +79,23 @@ function copyToClipboard() {
         </DialogHeader>
         
         <div class="space-y-4">
-          <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <p class="text-gray-900 whitespace-pre-wrap wrap-break-word">{{ decryptedMessage }}</p>
+          <div class="max-h-40 overflow-scroll p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <p class="text-gray-900 whitespace-pre-wrap wrap-break-word">
+              {{ decryptedMessage }}
+            </p>
           </div>
           
           <div class="flex gap-2">
             <Button 
               @click="copyToClipboard" 
               variant="outline"
-              class="flex-1"
+              class="flex-1 cursor-copy active:scale-95 transition-transform duration-75 ease-in-out"
             >
-              Copy Message
+              {{ isCopied ? 'Copied!' : 'Copy Message' }}
             </Button>
             <Button 
               @click="router.push('/')" 
-              class="flex-1 bg-indigo-500 hover:bg-indigo-600"
+              class="flex-1 bg-blue-400 hover:bg-blue-500 active:scale-95 transition-transform duration-75 ease-in-out"
             >
               Create Your Own
             </Button>
