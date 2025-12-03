@@ -4,9 +4,12 @@ import { watch } from 'vue';
 
 const { locale } = useI18n();
 
+document.documentElement.setAttribute("lang", locale.value);
+
 // Save language preference to localStorage whenever it changes
 watch(locale, (newLocale) => {
   localStorage.setItem('language', newLocale);
+  document.documentElement.setAttribute("lang", newLocale);
 });
 </script>
 
