@@ -96,7 +96,7 @@ async function shareMessage() {
 
     <div class="ml-10.75 mt-4">
       <a 
-        class="group"
+        class="block w-fit group"
         href="https://github.com/jakemackie/hidemymessage/"
         taget="_blank"
       >
