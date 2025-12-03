@@ -14,7 +14,7 @@ export default defineConfig({
       includeAssets: ['favicon.svg'],
       manifest: {
         name: 'Hide My Message',
-        short_name: 'HideMsg',
+        short_name: 'HideMyMessage',
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
