@@ -61,7 +61,7 @@ async function shareMessage() {
 <template>
   <div class="px-2 sm:px-0 max-w-md w-full flex flex-col gap-2">
     <div class="mb-4 text-center">
-      <h1 class="text-3xl font-bold text-gray-900 mb-2">🔒 Hide My Message</h1>
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">🔒 Hide My Message</h1>
       <p class="text-gray-600">Send encrypted messages that only the recipient can read</p>
     </div>
 
