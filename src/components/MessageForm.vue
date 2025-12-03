@@ -87,7 +87,7 @@ async function shareMessage() {
     </p>
 
 
-    <div class="relative mt-8 w-fit sm:w-80 rounded-lg border border-gray-300 bg-white">
+    <div class="relative mt-8 w-full sm:w-80 rounded-lg border border-gray-300 bg-white">
       <div class="absolute left-14 bottom-0 size-4 -translate-x-1/2 translate-y-1/2 rotate-45 transform border-r border-b border-gray-300 bg-white"></div>
       <p class="text-left p-4 text-sm text-gray-500">
         I&apos;m open source! If you found this website helpful, please consider leaving a star! ⭐
