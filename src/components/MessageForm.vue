@@ -68,7 +68,9 @@ async function shareMessage() {
     </div>
 
     <Textarea
+      id="message-input"
       v-model="message"
+      :aria-label="t('form.placeholder')"
       :placeholder="t('form.placeholder')"
       class="min-h-40 bg-white border-gray-300"
       :disabled="isEncrypting"
@@ -87,7 +89,6 @@ async function shareMessage() {
     <p class="text-sm text-gray-500 text-center mt-4">
       {{ t('app.security') }}
     </p>
-
 
     <div class="relative mt-8 w-full sm:w-80 rounded-lg border border-gray-300 bg-white">
       <div class="absolute left-14 bottom-0 size-4 -translate-x-1/2 translate-y-1/2 rotate-45 transform border-r border-b border-gray-300 bg-white"></div>

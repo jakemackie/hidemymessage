@@ -8,7 +8,7 @@
   "form": {
     "placeholder": "Tapez votre message secret ici...",
     "encrypting": "Cryptage...",
-    "share": "Partager"
+    "share": "Partager un message"
   },
   "message": {
     "title": "Message Secret",

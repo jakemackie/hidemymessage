@@ -8,7 +8,7 @@
   "form": {
     "placeholder": "Type your secret message here...",
     "encrypting": "Encrypting...",
-    "share": "Share"
+    "share": "Share Message"
   },
   "message": {
     "title": "Secret Message",
